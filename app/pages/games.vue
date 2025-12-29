@@ -23,8 +23,8 @@
                     <div style="overflow: hidden;">
                         <img class="game-img" :src="game?.image?.url" alt="" draggable="false">
                     </div>
-                    <div style="padding: 12px;">
-                        <h2 style="margin: 0 0 12px 0; font-size: 20px;">{{ game?.name }}</h2>
+                    <div style="padding: 8px;">
+                        <h2 style="margin: 0 0 4px 0; font-size: 16px;">{{ game?.name }}</h2>
                         <div style="font-size: 12px; color: var(--color3);">{{ convertDate(game?.date) }}</div>
                     </div>
                 </article>
@@ -45,7 +45,7 @@
                                     <div v-if="openGame?.event" style="font-size: 12px; color: var(--color3);">{{ openGame?.event }}</div>
                                 </div>
                                 <NuxtLink v-if="openGame?.link" target="_blank" :to="openGame?.link" style="text-decoration: none;">
-                                    <div style="padding: 8px 20px; font-size: 13px; background-color: var(--color5); color: white; border-radius: 12px; letter-spacing: 0.2em; font-weight: 600;">
+                                    <div style="padding: 8px 20px; font-size: 13px; color: var(--color3); border: 1px solid; border-radius: 12px; letter-spacing: 0.2em; font-weight: 600;">
                                         開啟連結
                                     </div>
                                 </NuxtLink>
@@ -70,7 +70,7 @@
 
     .game-img {
         width: 100%;
-        aspect-ratio: 1;
+        aspect-ratio: 1.4;
         object-fit: cover;
         transition: transform 0.6s;
         display: block;
@@ -104,7 +104,7 @@
         display: flex;
         flex-wrap: wrap;
         padding: 80px 40px 40px 40px;
-        gap: 40px;
+        gap: 60px;
         line-height: 1.8;
     }
 

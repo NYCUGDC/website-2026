@@ -1,16 +1,30 @@
 <script setup>
+    import gsap from 'gsap'
+
+    import { Draggable } from 'gsap/all'
+    
     const { data } = await useMicroCMSGetList({ endpoint: "committee" }, { key: 'committee' })
+
+    onMounted(() => {
+        gsap.from('#image1', { immediateRender: true, scale: 0, delay: 0.2 })
+        gsap.from('#image4', { immediateRender: true, scale: 0, delay: 0.5 })
+        gsap.from('#image2', { immediateRender: true, scale: 0, delay: 0.85 })
+        gsap.from('#image3', { immediateRender: true, scale: 0, delay: 0.75 })
+        gsap.from('#image5', { immediateRender: true, scale: 0, delay: 0.9 })
+        gsap.from('.window', { immediateRender: true, scale: 0, delay: 1 })
+        Draggable.create('.window', { zIndexBoost: false })
+    })
 </script>
 
 <template>
     <div>
         <header>
-            <img class="images" src="/tablet.png" alt="" width="172" style="position: absolute; top: 10%; left: 10%;">
-            <img class="images" src="/cd.png" alt="" width="75" style="position: absolute; top: 20%; left: 20%;">
-            <img class="images" src="/cube.png" alt="" width="77" style="position: absolute; bottom: 20%; left: 10%;">
-            <img class="images" src="/midi.png" alt="" width="163" style="position: absolute; bottom: 30%; right: 10%;">
-            <img class="images" src="/controller.png" alt="" width="56" style="position: absolute; top: 30%; right: 20%;">
-            <img style="position: relative;" src="/logo.png" alt="" width="80">
+            <img id="image1" class="images" draggable="false" src="/tablet.png" alt="" width="172" style="position: absolute; top: 10%; left: 10%;">
+            <img id="image2" class="images" draggable="false" src="/cd.png" alt="" width="75" style="position: absolute; top: 20%; left: 20%;">
+            <img id="image3" class="images" draggable="false" src="/cube.png" alt="" width="77" style="position: absolute; bottom: 20%; left: 10%;">
+            <img id="image4" class="images" draggable="false" src="/midi.png" alt="" width="163" style="position: absolute; bottom: 30%; right: 10%;">
+            <img id="image5" class="images" draggable="false" src="/controller.png" alt="" width="56" style="position: absolute; top: 30%; right: 20%;">
+            <img style="position: relative;" src="/logo.png" alt="" width="60" draggable="false">
             <h1 style="position: relative;"><span>陽明交通大學</span><br>遊戲設計社</h1>
             <div class="window">
                 <p>陽明交大遊戲設計社（NYCU GDC），誠徵邀請對遊戲製作、虛擬實境、動畫／角色／場景建模有興趣的你（不論科系），在大學期間與夥伴一起玩遊戲、做遊戲！</p>
@@ -47,15 +61,15 @@
                 </div>
             </div>
         </section>
-        <section style="margin: 100px 0px;">
-            <div style="max-width: 1200px; width: 90%; margin: auto;">
-                <h2 style="font-size: 15px; color: var(--color5); letter-spacing: 0.2em;">社團幹部</h2>
+        <section style="padding: 120px 0px; background: var(--color2);">
+            <div class="committee-list">
+                <h2 style="font-size: 15px; color: var(--color1); letter-spacing: 0.2em;">社團幹部</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px;" v-if="data?.contents?.length">
                     <div class="committee" v-for="committee in data?.contents">
                         <img :src="committee?.avatar?.url ?? '/icon.png'" alt="" draggable="false">
                         <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; margin-left: 12px;">
                             <div style="font-size: 16px; font-weight: 700;">{{ committee?.name }}</div>
-                            <div style="font-size: 12px; letter-spacing: 0.2em;">{{ committee?.role }}</div>
+                            <div style="font-size: 12px; letter-spacing: 0.1em;">{{ committee?.role }}</div>
                         </div>
                     </div>
                 </div>
@@ -74,10 +88,10 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 500px;
-
+        height: calc(100vh - 108px);
         background: radial-gradient(var(--color2) 1px, transparent 2px);
         background-size: 50px 50px;
+        overflow: hidden;
     }
 
     header > h1 {
@@ -87,6 +101,7 @@
         letter-spacing: 0.2em;
         color: var(--color5);
         margin: 0;
+        margin-top: 40px;
         line-height: 1.2;
     }
 
@@ -98,8 +113,9 @@
     .window {
         position: relative;
         max-width: 400px;
-        background-color: var(--color2);
-        color: var(--color1);
+        color: var(--color3);
+        border: 1px solid var(--color2);
+        background-color: white;
         letter-spacing: 0.05em;
         padding: 30px 20px 10px 20px;
         border-radius: 12px;
@@ -127,18 +143,28 @@
         letter-spacing: 0.1em;
         color: var(--color3);
     }
+    
+    .committee-list {
+        max-width: 1200px;
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 240px 1fr;
+    }
 
     .committee {
         width: 100%;
         border-radius: 12px;
         overflow: hidden;
         border: 1px solid var(--color2);
+        color: var(--color3);
+        background-color: white;
         display: flex;
     }
 
     .committee > img {
-        width: 60px;
-        height: 60px;
+        width: 56px;
+        height: 56px;
         object-fit: cover;
     }
 
@@ -159,6 +185,10 @@
 
         .images {
             opacity: 0.2;
+        }
+    
+        .committee-list {
+            display: block;
         }
     }
 </style>

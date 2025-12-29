@@ -1,4 +1,10 @@
 <script setup>
+    import gsap from 'gsap'
+    
+    import { Draggable } from 'gsap/all'
+
+    gsap.registerPlugin(Draggable)
+
     useHead({
         link: [
             { rel: 'icon', type: 'image', href: '/icon.png' }
@@ -65,7 +71,7 @@
         text-decoration: none;
         color: var(--color1);
         display: inline-block;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
         font-size: 15px;
         font-weight: 600;
     }

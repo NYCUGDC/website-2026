@@ -20,7 +20,7 @@
             <div class="news" v-if="data?.contents?.length">
                 <article v-for="news in data?.contents" style="border-radius: 12px; border: solid 1px var(--color2); padding: 12px;">
                     <NuxtLink :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset;">
-                        <h2 style="margin: 0 0 12px 0; font-size: 20px;">{{ news?.title }}</h2>
+                        <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ news?.title }}</h2>
                         <div style="font-size: 12px; color: var(--color3);">{{ convertDate(news?.date) }}</div>
                     </NuxtLink>
                 </article>
