@@ -29,7 +29,7 @@
     <MenuBar />
     <NuxtPage />
     <footer style="width: 100%; position: relative; overflow: hidden; background-color: var(--color3);">
-        <div style="font-weight: 900; font-size: 80px; color: var(--color2); position: absolute; white-space: nowrap; opacity: 0.1; top: 100px; animation: scroll 15s infinite linear;">
+        <div style="font-weight: 900; font-size: 80px; color: var(--color2); position: absolute; white-space: nowrap; opacity: 0.1; top: 100px; animation: scroll 25s infinite linear;">
             <span style="display: inline-block; padding-right: 30px">Fun to Play, Play to Live, Live for Fun</span>
             <span style="display: inline-block; padding-right: 30px">Fun to Play, Play to Live, Live for Fun</span>
         </div>
@@ -38,7 +38,7 @@
             <NuxtLink class="button" target="_blank" to="https://discord.gg/7tUWM2Dj53">
                 <div>Discord 社群</div>
             </NuxtLink>
-            <NuxtLink class="button" target="_blank" to="https://linktr.ee/nycugdc">
+            <NuxtLink class="button" target="_blank" to="https://linktr.ee/nycugdc" style="background-color: var(--color1); color: white;">
                 <div>其他連結</div>
             </NuxtLink>
         </div>
@@ -52,7 +52,7 @@
         --color1: #546375;
         --color2: #e4e9f2;
         --color3: #93aac1;
-        --color4: #1ca5f2;
+        --color4: #2cc2ff;
         --color5: #ff9100;
     }
 
@@ -64,7 +64,7 @@
 
     .button {
         background-color: var(--color2);
-        border-radius: 12px;
+        border-radius: 8px;
         padding: 12px;
         margin: 4px;
         width: 120px;

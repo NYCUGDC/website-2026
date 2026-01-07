@@ -15,13 +15,13 @@
                 <p style="color: var(--color3);">此處列出了 GDC 社團近期舉辦的課程與活動，歡迎大家踴躍參加！</p>
                 <h2 style="margin-top: 60px; color: var(--color3);">本學期</h2>
                 <div class="events" v-if="data?.contents?.length">
-                    <div v-if="!data?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); border: solid 1px var(--color2); border-radius: 12px; padding: 30px;">
+                    <div v-if="!data?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); border: solid 1px var(--color2); border-radius: 8px; padding: 20px;">
                         活動準備中，敬請期待！
                     </div>
                     <article class="event" v-for="event in data?.contents?.filter(e => !e?.ended)">
                         <div style="position: relative;">
                             <img :src="event?.image?.url ?? '/icon.png'" alt="" draggable="false">
-                            <div style="display: flex; flex-wrap: wrap; align-items: center; background-color: #00000080; color: white; position: absolute; width: 100%; bottom: 0; padding: 16px;">
+                            <div style="display: flex; flex-wrap: wrap; align-items: center; background: linear-gradient(0deg, #00000080 30%, transparent 100%); color: white; position: absolute; width: 100%; bottom: 0; padding: 16px;">
                                 <div style="font-size: 16px; font-weight: 700; margin-right: 12px;">{{ event?.name }}</div>
                                 <div style="font-size: 12px; letter-spacing: 0.1em;">{{ event?.time }}</div>
                             </div>
@@ -50,7 +50,7 @@
                     <article class="event" v-for="event in data?.contents?.filter(e => e?.ended)">
                         <div style="position: relative;">
                             <img :src="event?.image?.url ?? '/icon.png'" alt="" style="filter: grayscale(1); opacity: 0.5;" draggable="false">
-                            <div style="display: flex; flex-wrap: wrap; align-items: center; background-color: #00000080; color: white; position: absolute; width: 100%; bottom: 0; padding: 16px;">
+                            <div style="display: flex; flex-wrap: wrap; align-items: center; background: linear-gradient(0deg, #00000080 30%, transparent 100%); color: white; position: absolute; width: 100%; bottom: 0; padding: 16px;">
                                 <div style="font-size: 16px; font-weight: 700; margin-right: 12px;">{{ event?.name }}</div>
                                 <div style="font-size: 12px; letter-spacing: 0.1em;">{{ event?.time }}</div>
                             </div>
@@ -102,7 +102,7 @@
     .event {
         position: relative;
         overflow: hidden;
-        border-radius: 12px;
+        border-radius: 8px;
         border: solid 1px var(--color2);
     }
 

@@ -30,6 +30,7 @@
                 <div style="font-size: 12px; letter-spacing: 0.2em;">遊戲作品</div>
             </NuxtLink>
             <div class="social-links">
+                <div style="margin-bottom: 16px;">社群連結</div>
                 <NuxtLink target="_blank" to="https://www.facebook.com/NYCUGDC">
                     <div>Facebook</div>
                 </NuxtLink>
@@ -58,12 +59,11 @@
     nav {
         padding: 20px;
         box-sizing: border-box;
-        background-color: var(--color2);
+        background-color: white;
         position: fixed;
         width: 100%;
         top: 0;
         z-index: 10;
-        box-shadow: 0px 0px 5px #00000030;
     }
 
     .menu-button {

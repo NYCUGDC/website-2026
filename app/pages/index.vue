@@ -6,12 +6,12 @@
     const { data } = await useMicroCMSGetList({ endpoint: "committee" }, { key: 'committee' })
 
     onMounted(() => {
-        gsap.from('#image1', { immediateRender: true, scale: 0, delay: 0.2 })
-        gsap.from('#image4', { immediateRender: true, scale: 0, delay: 0.5 })
-        gsap.from('#image2', { immediateRender: true, scale: 0, delay: 0.85 })
-        gsap.from('#image3', { immediateRender: true, scale: 0, delay: 0.75 })
-        gsap.from('#image5', { immediateRender: true, scale: 0, delay: 0.9 })
-        gsap.from('.window', { immediateRender: true, scale: 0, delay: 1 })
+        gsap.to('#image1', { scale: 1, delay: 0.2 })
+        gsap.to('#image4', { scale: 1, delay: 0.5 })
+        gsap.to('#image2', { scale: 1, delay: 0.85 })
+        gsap.to('#image3', { scale: 1, delay: 0.75 })
+        gsap.to('#image5', { scale: 1, delay: 0.9 })
+        gsap.to('.window', { scale: 1, delay: 1 })
         Draggable.create('.window', { zIndexBoost: false })
     })
 </script>
@@ -19,11 +19,11 @@
 <template>
     <div>
         <header>
-            <img id="image1" class="images" draggable="false" src="/tablet.png" alt="" width="172" style="position: absolute; top: 10%; left: 10%;">
-            <img id="image2" class="images" draggable="false" src="/cd.png" alt="" width="75" style="position: absolute; top: 20%; left: 20%;">
-            <img id="image3" class="images" draggable="false" src="/cube.png" alt="" width="77" style="position: absolute; bottom: 20%; left: 10%;">
-            <img id="image4" class="images" draggable="false" src="/midi.png" alt="" width="163" style="position: absolute; bottom: 30%; right: 10%;">
-            <img id="image5" class="images" draggable="false" src="/controller.png" alt="" width="56" style="position: absolute; top: 30%; right: 20%;">
+            <img id="image1" class="images" draggable="false" src="/tablet.png" alt="" width="172" style="transform: scale(0); position: absolute; top: 10%; left: 10%;">
+            <img id="image2" class="images" draggable="false" src="/cd.png" alt="" width="75" style="transform: scale(0); position: absolute; top: 20%; left: 20%;">
+            <img id="image3" class="images" draggable="false" src="/cube.png" alt="" width="77" style="transform: scale(0); position: absolute; bottom: 20%; left: 10%;">
+            <img id="image4" class="images" draggable="false" src="/midi.png" alt="" width="163" style="transform: scale(0); position: absolute; bottom: 30%; right: 10%;">
+            <img id="image5" class="images" draggable="false" src="/controller.png" alt="" width="56" style="transform: scale(0); position: absolute; top: 30%; right: 20%;">
             <img style="position: relative;" src="/logo.png" alt="" width="60" draggable="false">
             <h1 style="position: relative;"><span>陽明交通大學</span><br>遊戲設計社</h1>
             <div class="window">
@@ -81,33 +81,32 @@
 <style>
     header {
         position: relative;
-        margin: 24px;
-        border-radius: 12px;
-        border: solid 1px var(--color2);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: calc(100vh - 108px);
+        height: calc(100vh - 60px);
         background: radial-gradient(var(--color2) 1px, transparent 2px);
         background-size: 50px 50px;
+        border-bottom: 1px solid var(--color2);
         overflow: hidden;
     }
 
     header > h1 {
         text-align: center;
         font-size: 48px;
-        font-weight: 400;
+        font-weight: 300;
         letter-spacing: 0.2em;
         color: var(--color5);
         margin: 0;
-        margin-top: 40px;
+        margin-top: 12px;
         line-height: 1.2;
     }
 
     header > h1 > span {
         font-size: 15px;
-        letter-spacing: 1.1em;
+        font-weight: 600;
+        letter-spacing: 0.8em;
     }
 
     .window {
@@ -118,10 +117,12 @@
         background-color: white;
         letter-spacing: 0.05em;
         padding: 30px 20px 10px 20px;
-        border-radius: 12px;
-        margin: 60px 16px 20px 16px;
+        border-radius: 8px;
+        margin: 60px 16px;
         line-height: 1.8;
         font-size: 13px;
+        box-shadow: 4px 4px var(--color2);
+        transform: scale(0);
     }
 
     .about-pictures {
@@ -134,7 +135,7 @@
         width: 100%;
         aspect-ratio: 1.66;
         object-fit: cover;
-        border-radius: 12px;
+        border-radius: 8px;
         margin-bottom: 12px;
     }
 
@@ -154,7 +155,7 @@
 
     .committee {
         width: 100%;
-        border-radius: 12px;
+        border-radius: 8px;
         overflow: hidden;
         border: 1px solid var(--color2);
         color: var(--color3);
