@@ -3,10 +3,10 @@
 </script>
 
 <template>
-    <div style="height: 60px;"></div>
+    <div style="height: 45px;"></div>
     <nav :data-open="open">
         <div style="font-size: 18px; max-width: 1200px; margin: auto; font-weight: 600;">
-            <NuxtLink to="/" style="color: unset; text-decoration: none;">
+            <NuxtLink to="/" style="color: var(--color1); text-decoration: none;">
                 <div class="menu-text-long">NYCU Game Design Club</div>
                 <div class="menu-text-short">NYCU GDC</div>
             </NuxtLink>
@@ -30,7 +30,7 @@
                 <div style="font-size: 12px; letter-spacing: 0.2em;">遊戲作品</div>
             </NuxtLink>
             <div class="social-links">
-                <div style="margin-bottom: 16px;">社群連結</div>
+                <div style="margin-bottom: 16px; color: var(--color3);">社群連結</div>
                 <NuxtLink target="_blank" to="https://www.facebook.com/NYCUGDC">
                     <div>Facebook</div>
                 </NuxtLink>
@@ -46,10 +46,10 @@
             </div>
         </div>
         <div class="menu-button" @click="open = !open">
-            <img src="/menu_button.png" alt="" height="54" style="position: absolute;">
-            <div style="height: 24px; display: flex; gap: 12px; position: relative; right: 30px;">
-                <div class="menu-icon-left" style="width: 8px; height: 100%; background: var(--color2);"></div>
-                <div class="menu-icon-right" style="width: 8px; height: 100%; background: var(--color2);"></div>
+            <img src="/menu_button.png" alt="" height="40" style="position: absolute;">
+            <div style="height: 20px; display: flex; gap: 12px; position: relative; right: 30px;">
+                <div class="menu-icon-left" style="width: 8px; height: 100%; background: white;"></div>
+                <div class="menu-icon-right" style="width: 8px; height: 100%; background: white;"></div>
             </div>
         </div>
     </nav>
@@ -57,9 +57,9 @@
 
  <style>
     nav {
-        padding: 20px;
+        padding: 12px 24px;
         box-sizing: border-box;
-        background-color: white;
+        background-color: var(--color2);
         position: fixed;
         width: 100%;
         top: 0;
@@ -68,7 +68,7 @@
 
     .menu-button {
         position: absolute;
-        height: 54px;
+        height: 40px;
         top: 0;
         right: 0;
         display: flex;
@@ -129,7 +129,7 @@
     }
 
     .menu-panel .router-link-active {
-        color: var(--color5);
+        color: var(--color1);
     }
 
     nav[data-open=false] .menu-panel {
@@ -138,9 +138,14 @@
 
     .menu-panel > a {
         text-decoration: none;
-        color: var(--color1);
+        color: var(--color3);
         font-size: 24px;
         font-weight: 600;
+        transition-duration: 0.2s;
+    }
+
+    .menu-panel > a:hover, .menu-panel .social-links > a:hover {
+        color: var(--color5);
     }
 
     .menu-panel .social-links {
@@ -152,8 +157,9 @@
 
     .menu-panel .social-links > a {
         text-decoration: none;
-        color: var(--color1);
+        color: var(--color3);
         font-size: 12px;
+        transition-duration: 0.2s;
     }
 
     @media (max-width: 800px) {

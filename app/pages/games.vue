@@ -19,7 +19,7 @@
             <h1 style="color: var(--color5);">Games</h1>
             <p style="color: var(--color3);">本頁面收錄了在遊戲接龍與 GameJam 等活動中，由社員們一起創作的遊戲作品！</p>
             <div class="game" v-if="data?.contents?.length">
-                <article v-for="game in data?.contents" @click="openGame = game" style="border-radius: 8px; border: solid 1px var(--color2); overflow: hidden; position: relative; cursor: pointer;">
+                <article v-for="game in data?.contents" @click="openGame = game">
                     <div style="overflow: hidden;">
                         <img class="game-img" :src="game?.image?.url" alt="" draggable="false">
                     </div>
@@ -34,7 +34,7 @@
         <Transition name="pop">
             <div class="open-game" v-if="openGame">
                 <div class="open-game-window">
-                    <div style="position: absolute; top: 20px; right: 20px; cursor: pointer; color: var(--color3);" @click="openGame = null">Close</div>
+                    <div style="position: absolute; top: 20px; right: 32px; cursor: pointer; color: var(--color3);" @click="openGame = null">Close</div>
                     <div class="open-game-content">
                         <div style="width: 100%; max-width: 360px; position: relative;">
                             <img :src="openGame?.image?.url" alt="" draggable="false" style="width: 100%; border-radius: 8px;">
@@ -64,6 +64,20 @@
         display: grid;
         gap: 20px;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .game article {
+        border-radius: 8px;
+        border: solid 1px var(--color2);
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
+
+    .game article:hover {
+        color: var(--color5);
+        border-color: var(--color5);
     }
 
     .game-img {
@@ -101,7 +115,7 @@
     .open-game-content {
         display: flex;
         flex-wrap: wrap;
-        padding: 80px 40px 40px 40px;
+        padding: 80px 60px 60px 60px;
         gap: 60px;
         line-height: 1.8;
     }
@@ -114,7 +128,7 @@
         text-align: center;
         padding: 8px;
         font-size: 15px;
-        color: var(--color2);
+        color: white;
         border-radius: 8px;
         background-color: var(--color1);
         letter-spacing: 0.05em;

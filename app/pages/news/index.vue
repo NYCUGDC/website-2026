@@ -18,7 +18,7 @@
             <h1 style="color: var(--color5);">News</h1>
             <p style="color: var(--color3);">關於社團近期的一些活動事項與重要公告</p>
             <div class="news" v-if="data?.contents?.length">
-                <article v-for="news in data?.contents" style="border-radius: 8px; border: solid 1px var(--color2); padding: 12px;">
+                <article v-for="news in data?.contents">
                     <NuxtLink :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset;">
                         <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ news?.title }}</h2>
                         <div style="font-size: 12px; color: var(--color3);">{{ convertDate(news?.date) }}</div>
@@ -41,5 +41,17 @@
         .news {
             grid-template-columns: 1fr;
         }
+    }
+
+    .news article {
+        transition-duration: 0.2s;
+        border-radius: 8px;
+        border: solid 1px var(--color2);
+        padding: 12px;
+    }
+
+    .news article:hover {
+        color: var(--color5);
+        border-color: var(--color5);
     }
 </style>

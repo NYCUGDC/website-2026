@@ -85,7 +85,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: calc(100vh - 60px);
+        height: calc(100vh - 45px);
         background: radial-gradient(var(--color2) 1px, transparent 2px);
         background-size: 50px 50px;
         border-bottom: 1px solid var(--color2);
@@ -157,7 +157,6 @@
         width: 100%;
         border-radius: 8px;
         overflow: hidden;
-        border: 1px solid var(--color2);
         color: var(--color3);
         background-color: white;
         display: flex;
