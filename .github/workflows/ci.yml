@@ -49,6 +49,9 @@ jobs:
         run: npm ci
       - name: Static HTML export with Nuxt
         run: npm run generate
+        env:
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
