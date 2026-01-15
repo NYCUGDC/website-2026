@@ -54,7 +54,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                     <div>
                         <div style="display: flex; gap: 20px; align-items: center;">
-                            <div style="background-image: url('/logo.png'); background-size: 120%; background-position: center; width: 80px; height: 50px; filter: brightness(5);"></div>
+                            <div style="background-image: url('/logo_white.png'); background-size: 120%; background-position: center; width: 80px; height: 50px;"></div>
                             <div style="font-size: 16px; letter-spacing: 0.2em;"><span style="font-size: 10px;">陽明交通大學</span><br>遊戲設計社</div>
                         </div>
                     </div>
