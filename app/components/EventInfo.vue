@@ -35,21 +35,20 @@
     .event {
         position: relative;
         overflow: hidden;
-        border-radius: 8px;
         border: solid 1px var(--color2);
     }
 
     .event img {
         width: 100%;
-        aspect-ratio: 2.3;
+        aspect-ratio: 2;
         display: block;
         object-fit: cover;
     }
 
     .event-info {
-        padding: 20px 28px;
+        padding: 16px;
         display: grid;
-        grid-template-columns: 40px 1fr;
+        grid-template-columns: 32px 1fr;
         gap: 8px;
         letter-spacing: 0.05em;
         font-size: 12px;
@@ -65,6 +64,5 @@
         padding: 4px 16px;
         letter-spacing: 0.1em;
         font-weight: 600;
-        border-bottom-left-radius: 8px;
     }
 </style>

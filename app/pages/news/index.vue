@@ -3,7 +3,7 @@
 
     function convertDate(text) {
         const date = new Date(text)
-        return date.toLocaleDateString()
+        return date.toLocaleDateString('zh-TW')
     }
 
     useSeoMeta({
@@ -18,12 +18,13 @@
             <h1 style="color: var(--color5);">News</h1>
             <p style="color: var(--color3);">關於社團近期的一些活動事項與重要公告</p>
             <div class="news" v-if="data?.contents?.length">
-                <article v-for="news in data?.contents">
-                    <NuxtLink :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset;">
+                <NuxtLink v-for="news in data?.contents" :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset; position: relative;">
+                    <article>
                         <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ news?.title }}</h2>
                         <div style="font-size: 12px; color: var(--color3);">{{ convertDate(news?.date) }}</div>
-                    </NuxtLink>
-                </article>
+                        <div style="position: absolute; height: 100%; width: 120px; background-image: url('/gdc-character.png'); background-size: cover; top: 0; right: 20px; filter: invert(1); opacity: 0.1;"></div>
+                    </article>
+                </NuxtLink>
             </div>
         </div>
     </section>
@@ -34,18 +35,11 @@
         margin-top: 100px;
         display: grid;
         gap: 12px;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
-
-    @media (max-width: 800px) {
-        .news {
-            grid-template-columns: 1fr;
-        }
-    }
-
+    
     .news article {
         transition-duration: 0.2s;
-        border-radius: 8px;
         border: solid 1px var(--color2);
         padding: 12px;
     }

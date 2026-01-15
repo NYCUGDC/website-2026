@@ -4,7 +4,7 @@
 
     function convertDate(text) {
         const date = new Date(text)
-        return date.toLocaleDateString()
+        return date.toLocaleDateString('zh-TW')
     }
 
     useSeoMeta({
@@ -37,7 +37,7 @@
                     <div style="position: absolute; top: 20px; right: 32px; cursor: pointer; color: var(--color3);" @click="openGame = null">Close</div>
                     <div class="open-game-content">
                         <div style="width: 100%; max-width: 360px; position: relative;">
-                            <img :src="openGame?.image?.url" alt="" draggable="false" style="width: 100%; border-radius: 8px;">
+                            <img :src="openGame?.image?.url" alt="" draggable="false" style="width: 100%;">
                             <h2>{{ openGame?.name }}</h2>
                             <div>
                                 <div style="font-size: 15px; color: var(--color3);">{{ convertDate(openGame?.date) }}</div>
@@ -67,7 +67,6 @@
     }
 
     .game article {
-        border-radius: 8px;
         border: solid 1px var(--color2);
         overflow: hidden;
         position: relative;
@@ -107,7 +106,6 @@
         right: 40px;
         bottom: 40px;
         left: 40px;
-        border-radius: 8px;
         background-color: var(--color2);
         overflow: scroll;
     }
@@ -129,7 +127,6 @@
         padding: 8px;
         font-size: 15px;
         color: white;
-        border-radius: 8px;
         background-color: var(--color1);
         letter-spacing: 0.05em;
         font-weight: 600;
@@ -154,7 +151,7 @@
         }
         
         .open-game-content {
-            padding: 60px 12px 12px 12px;
+            padding: 60px 16px;
         }
 
         .open-game-description {

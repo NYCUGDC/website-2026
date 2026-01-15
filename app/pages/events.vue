@@ -15,15 +15,17 @@
                 <p style="color: var(--color3);">此處列出了 GDC 社團近期舉辦的課程與活動，歡迎大家踴躍參加！</p>
                 <h2 style="margin-top: 60px; color: var(--color3);">本學期</h2>
                 <div class="events" v-if="data?.contents?.length">
-                    <div v-if="!data?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); border: solid 1px var(--color2); border-radius: 8px; padding: 20px;">
+                    <div v-if="!data?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); border: solid 1px var(--color2); padding: 20px;">
                         活動準備中，敬請期待！
                     </div>
                     <EventInfo v-for="event in data?.contents?.filter(e => !e?.ended)" :event="event" />
+                    <div></div>
                     <div></div>
                 </div>
                 <h2 style="margin-top: 60px; color: var(--color3);">已結束</h2>
                 <div class="events" v-if="data?.contents?.length">
                     <EventInfo v-for="event in data?.contents?.filter(e => e?.ended)" :event="event" />
+                    <div></div>
                     <div></div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
 <style>
     .events {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 16px;
     }
 

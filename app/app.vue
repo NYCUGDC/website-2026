@@ -2,14 +2,19 @@
     import gsap from 'gsap'
     
     import { Draggable } from 'gsap/all'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-    gsap.registerPlugin(Draggable)
+    gsap.registerPlugin(Draggable, ScrollTrigger)
 
     useHead({
         link: [
             { rel: 'icon', type: 'image', href: '/icon.png' }
         ]
     })
+
+    function scrollToTop() {
+        scroll(0, 0)
+    }
     
     useSeoMeta({
         lang: 'zh-tw',
@@ -28,19 +33,48 @@
     <NuxtLoadingIndicator color="#ff9100" />
     <MenuBar />
     <NuxtPage />
-    <footer style="width: 100%; position: relative; overflow: hidden; background-color: var(--color3);">
-        <div style="font-weight: 900; font-size: 80px; color: var(--color2); position: absolute; white-space: nowrap; opacity: 0.1; top: 100px; animation: scroll 25s infinite linear;">
-            <span style="display: inline-block; padding-right: 30px">Fun to Play, Play to Live, Live for Fun</span>
-            <span style="display: inline-block; padding-right: 30px">Fun to Play, Play to Live, Live for Fun</span>
+    <footer>
+        <div style="width: 100%; position: relative; overflow: hidden; background-color: var(--color3);">
+            <div style="font-weight: 900; font-size: 80px; color: var(--color2); position: absolute; white-space: nowrap; opacity: 0.1; top: 100px; animation: scroll 25s infinite linear;">
+                <span style="display: inline-block; padding-right: 30px">Fun to Play, Play to Live, Live for Fun</span>
+                <span style="display: inline-block; padding-right: 30px">Fun to Play, Play to Live, Live for Fun</span>
+            </div>
+            <div style="max-width: 1200px; width: 90%; margin: auto; text-align: center; padding: 100px 0; position: relative;">
+                <div style="font-size: 24px; color: white; margin-bottom: 20px;">加入我們，一起做遊戲！</div>
+                <NuxtLink class="button" target="_blank" to="https://discord.gg/7tUWM2Dj53">
+                    <div>Discord 社群</div>
+                </NuxtLink>
+                <NuxtLink class="button" target="_blank" to="https://linktr.ee/nycugdc" style="background-color: var(--color1); color: white;">
+                    <div>其他連結</div>
+                </NuxtLink>
+            </div>
         </div>
-        <div style="max-width: 1200px; width: 90%; margin: auto; text-align: center; padding: 100px 0; position: relative;">
-            <div style="font-size: 24px; color: white; margin-bottom: 20px;">加入我們，一起做遊戲！</div>
-            <NuxtLink class="button" target="_blank" to="https://discord.gg/7tUWM2Dj53">
-                <div>Discord 社群</div>
-            </NuxtLink>
-            <NuxtLink class="button" target="_blank" to="https://linktr.ee/nycugdc" style="background-color: var(--color1); color: white;">
-                <div>其他連結</div>
-            </NuxtLink>
+        <div style="background-color: var(--color1);">
+            <div style="max-width: 1200px; width: 90%; margin: auto; color: white; padding: 40px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <div>
+                        <div style="display: flex; gap: 20px; align-items: center;">
+                            <div style="background-image: url('/logo.png'); background-size: 120%; background-position: center; width: 80px; height: 50px; filter: brightness(5);"></div>
+                            <div style="font-size: 16px; letter-spacing: 0.2em;"><span style="font-size: 10px;">陽明交通大學</span><br>遊戲設計社</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 24px; font-weight: 600; color: var(--color3); cursor: pointer;" @click="scrollToTop">TOP</div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-left: 4px;">
+                    <NuxtLink to="/">
+                        <div>Home</div>
+                    </NuxtLink>
+                    <NuxtLink to="/news">
+                        <div>News</div>
+                    </NuxtLink>
+                    <NuxtLink to="/events">
+                        <div>Event & Course</div>
+                    </NuxtLink>
+                    <NuxtLink to="/games">
+                        <div>Games</div>
+                    </NuxtLink>
+                </div>
+            </div>
         </div>
     </footer>
 </template>
@@ -56,6 +90,10 @@
         --color5: #ff9100;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         margin: 0;
         font-family: 'Rubik', 'Noto Sans TC';
@@ -64,7 +102,6 @@
 
     .button {
         background-color: var(--color2);
-        border-radius: 8px;
         padding: 12px;
         margin: 4px;
         width: 120px;
@@ -74,6 +111,12 @@
         letter-spacing: 0.05em;
         font-size: 15px;
         font-weight: 600;
+    }
+
+    footer a {
+        color: var(--color3);
+        font-size: 12px;
+        letter-spacing: 0.1em;
     }
 
     @keyframes scroll {

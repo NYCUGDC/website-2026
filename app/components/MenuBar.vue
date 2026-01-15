@@ -3,7 +3,6 @@
 </script>
 
 <template>
-    <div style="height: 45px;"></div>
     <nav :data-open="open">
         <div style="font-size: 18px; max-width: 1200px; margin: auto; font-weight: 600;">
             <NuxtLink to="/" style="color: var(--color1); text-decoration: none;">
@@ -44,6 +43,7 @@
                     <div>Itch.io</div>
                 </NuxtLink>
             </div>
+            <div style="position: absolute; height: 120px; width: 120px; background-image: url('/gdc-character.png'); background-size: cover; bottom: 0; right: 90px; filter: invert(1); opacity: 0.1;"></div>
         </div>
         <div class="menu-button" @click="open = !open">
             <img src="/menu_button.png" alt="" height="40" style="position: absolute;">
@@ -117,15 +117,16 @@
         position: fixed;
         background-color: white;
         height: 100%;
-        width: 240px;
+        width: 300px;
         top: 0;
         right: 0;
         display: flex;
         flex-direction: column;
         gap: 20px;
-        padding: 120px 32px;
+        padding: 100px 32px;
         text-align: right;
         transition: transform 0.3s;
+        box-sizing: border-box;
     }
 
     .menu-panel .router-link-active {
