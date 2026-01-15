@@ -3,7 +3,7 @@
 
     function convertDate(text) {
         const date = new Date(text)
-        return date.toLocaleDateString('zh-TW')
+        return date.toLocaleString('zh-TW')
     }
 
     useSeoMeta({
@@ -21,7 +21,9 @@
                 <NuxtLink v-for="news in data?.contents" :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset; position: relative;">
                     <article>
                         <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ news?.title }}</h2>
-                        <div style="font-size: 12px; color: var(--color3);">{{ convertDate(news?.date) }}</div>
+                        <ClientOnly>
+                            <div style="font-size: 12px; color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">發布時間</span>{{ convertDate(news?.publishedAt) }}</div>
+                        </ClientOnly>
                         <div style="position: absolute; height: 100%; width: 120px; background-image: url('/gdc-character.png'); background-size: cover; top: 0; right: 20px; filter: invert(1); opacity: 0.1;"></div>
                     </article>
                 </NuxtLink>

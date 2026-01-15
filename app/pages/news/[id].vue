@@ -10,7 +10,7 @@
 
     function convertDate(text) {
         const date = new Date(text)
-        return date.toLocaleDateString('zh-TW')
+        return date.toLocaleString('zh-TW')
     }
 
     useSeoMeta({
@@ -21,8 +21,11 @@
 <template>
     <section style="margin: 100px 0px;">
         <div style="max-width: 1200px; width: 90%; margin: auto;">
+            <div style="font-size: 15px; color: var(--color5); letter-spacing: 0.2em; font-weight: 700;">最新消息</div>
             <h1 style="color: var(--color5);">{{ data?.contents[0]?.title }}</h1>
-            <p style="color: var(--color3);">{{ convertDate(data?.contents[0]?.date) }}</p>
+            <ClientOnly>
+                <p style="color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">發佈時間</span>{{ convertDate(data?.contents[0]?.publishedAt) }}</p>
+            </ClientOnly>
             <div class="news-content" v-html="data?.contents[0]?.content"></div>
         </div>
     </section>
@@ -30,8 +33,8 @@
 
 <style>
     .news-content {
-        margin-top: 60px;
-        margin-bottom: 200px;
+        margin-top: 80px;
+        margin-bottom: 240px;
         line-height: 1.8;
     }
 

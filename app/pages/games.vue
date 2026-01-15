@@ -25,7 +25,9 @@
                     </div>
                     <div style="padding: 8px;">
                         <h2 style="margin: 0 0 4px 0; font-size: 16px;">{{ game?.name }}</h2>
-                        <div style="font-size: 12px; color: var(--color3);">{{ convertDate(game?.date) }}</div>
+                        <ClientOnly>
+                            <div style="font-size: 12px; color: var(--color3);">{{ convertDate(game?.date) }}</div>
+                        </ClientOnly>
                     </div>
                 </article>
             </div>
@@ -62,7 +64,7 @@
         text-align: center;
         margin-top: 100px;
         display: grid;
-        gap: 20px;
+        gap: 12px;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
