@@ -59,7 +59,6 @@
     nav {
         padding: 12px 24px;
         box-sizing: border-box;
-        background-color: var(--color2);
         position: fixed;
         width: 100%;
         top: 0;

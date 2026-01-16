@@ -15,7 +15,7 @@
             gsap.to('#image3', { scale: 1, delay: 0.75 })
             gsap.to('#image5', { scale: 1, delay: 0.9 })
             gsap.to('.window', { scale: 1, delay: 1 })
-            Draggable.create('.window', { zIndexBoost: false })
+            Draggable.create('.window', { bounds: 'header', zIndexBoost: false })
             
             gsap.from('#about-1', { y: 40, opacity: 0, scrollTrigger: { trigger: '#about-1', start: 'center bottom' } })
             gsap.from('#about-2', { y: 40, opacity: 0, delay: 0.2, scrollTrigger: { trigger: '#about-2', start: 'center bottom' } })
@@ -39,11 +39,13 @@
             <img style="position: relative;" src="/logo.png" alt="" width="60" draggable="false">
             <h1 style="position: relative;"><span>陽明交通大學</span><br>遊戲設計社</h1>
             <div class="window">
-                <p>陽明交大遊戲設計社（NYCU GDC），誠徵邀請對遊戲製作、虛擬實境、動畫／角色／場景建模有興趣的你（不論科系），在大學期間與夥伴一起玩遊戲、做遊戲！</p>
-                <img src="/window_icon.png" alt="" width="60" style="position: absolute; top: 16px; right: 16px;">
+                <div style="padding: 30px 20px 10px 20px;">
+                    <p>陽明交大遊戲設計社（NYCU GDC），誠徵邀請對遊戲製作、虛擬實境、動畫／角色／場景建模有興趣的你（不論科系），在大學期間與夥伴一起玩遊戲、做遊戲！</p>
+                    <img src="/window_icon.png" alt="" width="60" style="position: absolute; top: 16px; right: 16px;">
+                </div>
             </div>
         </header>
-        <section style="margin: 100px 0px;">
+        <section style="margin-bottom: 100px;">
             <div style="max-width: 1200px; width: 90%; margin: auto;">
                 <div class="about-pictures">
                     <div id="about-1">
@@ -88,8 +90,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 800px;
-        overflow: hidden;
+        height: 900px;
     }
 
     header > h1 {
@@ -116,7 +117,6 @@
         border: 1px solid var(--color2);
         background-color: white;
         letter-spacing: 0.05em;
-        padding: 30px 20px 10px 20px;
         margin: 60px 16px;
         line-height: 1.8;
         font-size: 13px;

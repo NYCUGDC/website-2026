@@ -40,7 +40,7 @@
                 <span style="display: inline-block; padding-right: 30px">Fun to Play, Play to Live, Live for Fun</span>
             </div>
             <div style="max-width: 1200px; width: 90%; margin: auto; text-align: center; padding: 100px 0; position: relative;">
-                <div style="font-size: 24px; color: white; margin-bottom: 20px;">加入我們，一起做遊戲！</div>
+                <div style="font-size: 24px; color: white; margin-bottom: 20px; letter-spacing: 0.05em;">加入我們，一起做遊戲！</div>
                 <NuxtLink class="button" target="_blank" to="https://discord.gg/7tUWM2Dj53">
                     <div>Discord 社群</div>
                 </NuxtLink>
@@ -50,17 +50,17 @@
             </div>
         </div>
         <div style="background-color: var(--color1);">
-            <div style="max-width: 1200px; width: 90%; margin: auto; color: white; padding: 40px 0;">
+            <div style="max-width: 1200px; width: 90%; margin: auto; color: white; padding: 60px 0;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                     <div>
-                        <div style="display: flex; gap: 20px; align-items: center;">
+                        <div style="display: flex; gap: 8px; align-items: center;">
                             <div style="background-image: url('/logo_white.png'); background-size: 120%; background-position: center; width: 80px; height: 50px;"></div>
                             <div style="font-size: 16px; letter-spacing: 0.2em;"><span style="font-size: 10px;">陽明交通大學</span><br>遊戲設計社</div>
                         </div>
                     </div>
                     <div style="font-size: 24px; font-weight: 600; color: var(--color3); cursor: pointer;" @click="scrollToTop">TOP</div>
                 </div>
-                <div style="display: flex; gap: 16px; margin-left: 4px;">
+                <div style="display: flex; gap: 16px; margin-left: 6px;">
                     <NuxtLink to="/">
                         <div>Home</div>
                     </NuxtLink>
@@ -111,6 +111,7 @@
         letter-spacing: 0.05em;
         font-size: 15px;
         font-weight: 600;
+        border-radius: 32px;
     }
 
     footer a {

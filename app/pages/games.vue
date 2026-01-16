@@ -13,10 +13,10 @@
 </script>
 
 <template>
-    <section style="margin: 100px 0px;">
+    <section style="margin: 200px 0px;">
         <div style="max-width: 1200px; width: 90%; margin: auto;">
-            <div style="font-size: 15px; color: var(--color5); letter-spacing: 0.2em; font-weight: 700;">遊戲作品</div>
-            <h1 style="color: var(--color5);">Games</h1>
+            <div style="font-size: 12px; color: var(--color5); letter-spacing: 0.2em; font-weight: 600;">遊戲作品</div>
+            <h1 style="color: var(--color5); margin-top: 8px;">Games</h1>
             <p style="color: var(--color3);">本頁面收錄了在遊戲接龍與 GameJam 等活動中，由社員們一起創作的遊戲作品！</p>
             <div class="game" v-if="data?.contents?.length">
                 <article v-for="game in data?.contents" @click="openGame = game">
@@ -134,6 +134,7 @@
         font-weight: 600;
         width: 120px;
         margin-top: 32px;
+        border-radius: 32px;
     }
 
     .pop-enter-active, .pop-leave-active {

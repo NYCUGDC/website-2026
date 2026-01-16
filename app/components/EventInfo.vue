@@ -57,12 +57,15 @@
 
     .tag {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 0px;
+        right: 0px;
         color: white;
         font-size: 12px;
         padding: 4px 16px;
         letter-spacing: 0.1em;
         font-weight: 600;
+        text-align: center;
+        width: 200px;
+        transform: translate(60px, 12px) rotate(21deg);
     }
 </style>
