@@ -119,6 +119,23 @@
         letter-spacing: 0.1em;
     }
 
+    .news {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+    }
+    
+    .news article {
+        transition-duration: 0.2s;
+        border: solid 1px var(--color2);
+        padding: 12px;
+    }
+
+    .news article:hover {
+        color: var(--color5);
+        border-color: var(--color5);
+    }
+
     @keyframes scroll {
         from { transform: translateX(0); }
         to { transform: translateX(-50%); }

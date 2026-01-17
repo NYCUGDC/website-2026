@@ -17,7 +17,7 @@
             <div style="font-size: 12px; color: var(--color5); letter-spacing: 0.2em; font-weight: 600;">最新消息</div>
             <h1 style="color: var(--color5); margin-top: 8px;">News</h1>
             <p style="color: var(--color3);">關於社團近期的一些活動事項與重要公告</p>
-            <div class="news" v-if="data?.contents?.length">
+            <div class="news" v-if="data?.contents?.length" style="margin-top: 100px;">
                 <NuxtLink v-for="news in data?.contents" :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset; position: relative;">
                     <article>
                         <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ news?.title }}</h2>
@@ -33,21 +33,4 @@
 </template>
 
 <style>
-    .news {
-        margin-top: 100px;
-        display: grid;
-        gap: 12px;
-        grid-template-columns: 1fr;
-    }
-    
-    .news article {
-        transition-duration: 0.2s;
-        border: solid 1px var(--color2);
-        padding: 12px;
-    }
-
-    .news article:hover {
-        color: var(--color5);
-        border-color: var(--color5);
-    }
 </style>

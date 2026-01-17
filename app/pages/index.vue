@@ -1,5 +1,12 @@
 <script setup>
-    const { data } = await useMicroCMSGetList({ endpoint: "committee" }, { key: 'committee' })
+    const { data } = await useMicroCMSGetList({ endpoint: "committee", queries: { limit: 30 } }, { key: 'committee' })
+    const news = (await useMicroCMSGetList({ endpoint: "news", queries: { limit: 3 } }, { key: 'news-home' })).data
+    const events = (await useMicroCMSGetList({ endpoint: "events" }, { key: 'events' })).data
+
+    function convertDate(text) {
+        const date = new Date(text)
+        return date.toLocaleString('zh-TW')
+    }
 </script>
 
 <template>
@@ -40,12 +47,57 @@
                 </div>
             </div>
         </section>
+        <section style="margin: 160px 0px;">
+            <div style="max-width: 1200px; width: 90%; margin: auto;">
+                <div class="news-events">
+                    <div>
+                        <h2 style="text-align: center; color: var(--color5); font-size: 36px;">News</h2>
+                        <div class="news" v-if="news?.contents?.length">
+                            <NuxtLink v-for="news in news?.contents" :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset; position: relative;">
+                                <article>
+                                    <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ news?.title }}</h2>
+                                    <ClientOnly>
+                                        <div style="font-size: 12px; color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">發布時間</span>{{ convertDate(news?.publishedAt) }}</div>
+                                    </ClientOnly>
+                                    <div style="position: absolute; height: 100%; width: 120px; background-image: url('/gdc-character.png'); background-size: cover; top: 0; right: 20px; filter: invert(1); opacity: 0.1;"></div>
+                                </article>
+                            </NuxtLink>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <NuxtLink class="button" to="/news" style="background-color: var(--color1); color: white;">
+                                <div>更多最新消息</div>
+                            </NuxtLink>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 style="text-align: center; color: var(--color5); font-size: 36px;">Event & Course</h2>
+                        <div v-if="events?.contents?.length" style="display: grid; gap: 12px;">
+                            <div v-if="!events?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px;">
+                                活動準備中，敬請期待！
+                            </div>
+                            <div v-for="event in events?.contents?.filter(e => !e?.ended)" style="position: relative; height: 100px; border: solid 1px var(--color2); display: flex; align-items: center;">
+                                <img :src="event?.image?.url ?? '/logo.png'" alt="" draggable="false" style="height: 100%; aspect-ratio: 1.5; object-fit: cover;">
+                                <div style="padding: 16px; color: var(--color3);">
+                                    <div style="font-size: 16px; font-weight: 700; margin-right: 12px;">{{ event?.name }}</div>
+                                    <div style="font-size: 12px; letter-spacing: 0.1em;">{{ event?.time }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <NuxtLink class="button" to="/events" style="background-color: var(--color1); color: white;">
+                                <div>所有活動／課程</div>
+                            </NuxtLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section style="padding: 120px 0px; background: var(--color2);">
-            <div class="committee-list">
+            <div style="max-width: 1000px; width: 90%; margin: auto;" class="committee-list">
                 <h2 style="font-size: 18px; color: var(--color1); letter-spacing: 0.2em; margin-top: 0px;">社團幹部</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px;" v-if="data?.contents?.length">
                     <div class="committee" v-for="committee in data?.contents">
-                        <img :src="committee?.avatar?.url ?? '/icon.png'" alt="" draggable="false">
+                        <img :src="committee?.avatar?.url ?? '/gdc-character.png'" alt="" draggable="false">
                         <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; margin-left: 12px;">
                             <div style="font-size: 16px; font-weight: 700;">{{ committee?.name }}</div>
                             <div style="font-size: 12px; letter-spacing: 0.1em;">{{ committee?.role }}</div>
@@ -124,11 +176,14 @@
         border-radius: 60px;
         font-size: 24px;
     }
+
+    .news-events {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
     
     .committee-list {
-        max-width: 1000px;
-        width: 90%;
-        margin: auto;
         display: grid;
         grid-template-columns: 240px 1fr;
     }
@@ -165,6 +220,10 @@
 
         .images {
             opacity: 0.2;
+        }
+
+        .news-events {
+            grid-template-columns: 1fr;
         }
     
         .committee-list {
