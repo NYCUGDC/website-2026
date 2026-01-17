@@ -1,41 +1,15 @@
 <script setup>
-    import gsap from 'gsap'
-
-    import { Draggable } from 'gsap/all'
-    
     const { data } = await useMicroCMSGetList({ endpoint: "committee" }, { key: 'committee' })
-
-    let ctx
-
-    onMounted(() => {
-        ctx = gsap.context(() => {
-            gsap.to('#image1', { scale: 1, delay: 0.2 })
-            gsap.to('#image4', { scale: 1, delay: 0.5 })
-            gsap.to('#image2', { scale: 1, delay: 0.85 })
-            gsap.to('#image3', { scale: 1, delay: 0.75 })
-            gsap.to('#image5', { scale: 1, delay: 0.9 })
-            gsap.to('.window', { scale: 1, delay: 1 })
-            Draggable.create('.window', { bounds: 'header', zIndexBoost: false })
-            
-            gsap.from('#about-1', { y: 40, opacity: 0, scrollTrigger: { trigger: '#about-1', start: 'center bottom' } })
-            gsap.from('#about-2', { y: 40, opacity: 0, delay: 0.2, scrollTrigger: { trigger: '#about-2', start: 'center bottom' } })
-            gsap.from('#about-3', { y: 40, opacity: 0, delay: 0.4, scrollTrigger: { trigger: '#about-3', start: 'center bottom' } })
-        })
-    })
-
-    onUnmounted(() => {
-        ctx.revert()
-    })
 </script>
 
 <template>
     <div>
         <header>
-            <img id="image1" class="images" draggable="false" src="/tablet.png" alt="" width="172" style="transform: scale(0); position: absolute; top: 15%; left: 10%;">
-            <img id="image2" class="images" draggable="false" src="/cd.png" alt="" width="75" style="transform: scale(0); position: absolute; top: 25%; left: 20%;">
-            <img id="image3" class="images" draggable="false" src="/cube.png" alt="" width="77" style="transform: scale(0); position: absolute; bottom: 20%; left: 10%;">
-            <img id="image4" class="images" draggable="false" src="/midi.png" alt="" width="163" style="transform: scale(0); position: absolute; bottom: 30%; right: 10%;">
-            <img id="image5" class="images" draggable="false" src="/controller.png" alt="" width="56" style="transform: scale(0); position: absolute; top: 35%; right: 20%;">
+            <img id="image1" class="images" draggable="false" src="/tablet.png" alt="" width="172" style="position: absolute; top: 15%; left: 10%;">
+            <img id="image2" class="images" draggable="false" src="/cd.png" alt="" width="75" style="position: absolute; top: 25%; left: 20%;">
+            <img id="image3" class="images" draggable="false" src="/cube.png" alt="" width="77" style="position: absolute; bottom: 20%; left: 10%;">
+            <img id="image4" class="images" draggable="false" src="/midi.png" alt="" width="163" style="position: absolute; bottom: 30%; right: 10%;">
+            <img id="image5" class="images" draggable="false" src="/controller.png" alt="" width="56" style="position: absolute; top: 35%; right: 20%;">
             <img style="position: relative;" src="/logo.png" alt="" width="60" draggable="false">
             <h1 style="position: relative;"><span>陽明交通大學</span><br>遊戲設計社</h1>
             <div class="window">
@@ -68,7 +42,7 @@
         </section>
         <section style="padding: 120px 0px; background: var(--color2);">
             <div class="committee-list">
-                <h2 style="font-size: 15px; color: var(--color1); letter-spacing: 0.2em;">社團幹部</h2>
+                <h2 style="font-size: 18px; color: var(--color1); letter-spacing: 0.2em; margin-top: 0px;">社團幹部</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px;" v-if="data?.contents?.length">
                     <div class="committee" v-for="committee in data?.contents">
                         <img :src="committee?.avatar?.url ?? '/icon.png'" alt="" draggable="false">
@@ -90,7 +64,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 900px;
+        height: 600px;
     }
 
     header > h1 {
@@ -112,7 +86,7 @@
 
     .window {
         position: relative;
-        max-width: 400px;
+        max-width: 480px;
         color: var(--color3);
         border: 1px solid var(--color2);
         background-color: white;
@@ -121,7 +95,6 @@
         line-height: 1.8;
         font-size: 13px;
         box-shadow: 4px 4px var(--color2);
-        transform: scale(0);
     }
 
     .about-pictures {
@@ -142,9 +115,18 @@
         letter-spacing: 0.1em;
         color: var(--color3);
     }
+
+    .about-button {
+        color: white;
+        text-decoration: none;
+        padding: 16px;
+        background: var(--color3);
+        border-radius: 60px;
+        font-size: 24px;
+    }
     
     .committee-list {
-        max-width: 1200px;
+        max-width: 1000px;
         width: 90%;
         margin: auto;
         display: grid;

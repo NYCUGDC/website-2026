@@ -1,10 +1,9 @@
 <script setup>
     import gsap from 'gsap'
     
-    import { Draggable } from 'gsap/all'
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-    gsap.registerPlugin(Draggable, ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger)
 
     useHead({
         link: [

@@ -29,7 +29,6 @@
                 <div style="font-size: 12px; letter-spacing: 0.2em;">遊戲作品</div>
             </NuxtLink>
             <div class="social-links">
-                <div style="margin-bottom: 16px; color: var(--color3);">社群連結</div>
                 <NuxtLink target="_blank" to="https://www.facebook.com/NYCUGDC">
                     <div>Facebook</div>
                 </NuxtLink>
