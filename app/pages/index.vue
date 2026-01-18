@@ -30,7 +30,7 @@
             <div style="max-width: 1200px; width: 90%; margin: auto;">
                 <div class="about-pictures">
                     <div id="about-1">
-                        <img src="/event.jpeg" alt="" draggable="false">
+                        <img src="/event1.jpg" alt="" draggable="false">
                         <div style="font-weight: 700;">遊戲製作社課</div>
                         <p>每學期開設遊戲製作相關技術的課程提供社員參加，包括 Unity 遊戲引擎操作、程式設計與 3D 建模等。</p>
                     </div>
@@ -51,7 +51,7 @@
             <div style="max-width: 1200px; width: 90%; margin: auto;">
                 <div class="news-events">
                     <div>
-                        <h2 style="text-align: center; color: var(--color5); font-size: 36px;">News</h2>
+                        <h2 style="text-align: center; color: var(--color5); font-size: 28px;">News</h2>
                         <div class="news" v-if="news?.contents?.length">
                             <NuxtLink v-for="news in news?.contents" :to="'/news/' + news?.slug" style="text-decoration: unset; color: unset; position: relative;">
                                 <article>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div>
-                        <h2 style="text-align: center; color: var(--color5); font-size: 36px;">Event & Course</h2>
+                        <h2 style="text-align: center; color: var(--color5); font-size: 28px;">Event & Course</h2>
                         <div v-if="events?.contents?.length" style="display: grid; gap: 12px;">
                             <div v-if="!events?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px;">
                                 活動準備中，敬請期待！
@@ -94,7 +94,7 @@
         </section>
         <section style="padding: 120px 0px; background: var(--color2);">
             <div style="max-width: 1000px; width: 90%; margin: auto;" class="committee-list">
-                <h2 style="font-size: 18px; color: var(--color1); letter-spacing: 0.2em; margin-top: 0px;">社團幹部</h2>
+                <div style="font-size: 15px; color: var(--color1); letter-spacing: 0.2em; font-weight: 600;">社團幹部</div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px;" v-if="data?.contents?.length">
                     <div class="committee" v-for="committee in data?.contents">
                         <img :src="committee?.avatar?.url ?? '/gdc-character.png'" alt="" draggable="false">
@@ -116,12 +116,12 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 600px;
+        height: 700px;
     }
 
     header > h1 {
         text-align: center;
-        font-size: 48px;
+        font-size: 45px;
         font-weight: 300;
         letter-spacing: 0.2em;
         color: var(--color5);
@@ -186,6 +186,7 @@
     .committee-list {
         display: grid;
         grid-template-columns: 240px 1fr;
+        gap: 20px;
     }
 
     .committee {
@@ -222,12 +223,8 @@
             opacity: 0.2;
         }
 
-        .news-events {
+        .news-events, .committee-list {
             grid-template-columns: 1fr;
-        }
-    
-        .committee-list {
-            display: block;
         }
     }
 </style>

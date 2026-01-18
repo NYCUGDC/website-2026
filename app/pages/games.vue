@@ -46,7 +46,7 @@
                                 <div v-if="openGame?.event" style="font-size: 15px; color: var(--color3);">{{ openGame?.event }}</div>
                             </div>
                             <NuxtLink v-if="openGame?.link" target="_blank" :to="openGame?.link" style="text-decoration: none;">
-                                <div class="game-button">
+                                <div class="button" style="background-color: var(--color1); color: white; text-align: center; margin-top: 20px;">
                                     開啟連結
                                 </div>
                             </NuxtLink>
@@ -122,19 +122,6 @@
 
     .open-game-description {
         white-space: pre-wrap;
-    }
-
-    .game-button {
-        text-align: center;
-        padding: 8px;
-        font-size: 15px;
-        color: white;
-        background-color: var(--color1);
-        letter-spacing: 0.05em;
-        font-weight: 600;
-        width: 120px;
-        margin-top: 32px;
-        border-radius: 32px;
     }
 
     .pop-enter-active, .pop-leave-active {

@@ -12,7 +12,7 @@
     })
 
     function scrollToTop() {
-        scroll(0, 0)
+        scroll({ top: 0, behavior: 'smooth' })
     }
     
     useSeoMeta({
@@ -89,10 +89,6 @@
         --color5: #ff9100;
     }
 
-    html {
-        scroll-behavior: smooth;
-    }
-
     body {
         margin: 0;
         font-family: 'Rubik', 'Noto Sans TC';
@@ -111,6 +107,12 @@
         font-size: 15px;
         font-weight: 600;
         border-radius: 32px;
+        transition-duration: 0.2s;
+    }
+
+    .button:hover {
+        background-color: var(--color5) !important;
+        color: white !important;
     }
 
     footer a {
