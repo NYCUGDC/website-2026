@@ -108,6 +108,7 @@
         font-weight: 600;
         border-radius: 32px;
         transition-duration: 0.2s;
+        line-height: 1.5;
     }
 
     .button:hover {
