@@ -89,7 +89,7 @@
             </div>
         </section>
         <section style="padding: 120px 0px; background: var(--color2);">
-            <div style="max-width: 1000px; width: 90%; margin: auto;" class="committee-list">
+            <div style="max-width: 900px; width: 90%; margin: auto;" class="committee-list">
                 <div style="font-size: 15px; color: var(--color1); letter-spacing: 0.2em; font-weight: 600;">社團幹部</div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px;" v-if="data?.contents?.length">
                     <div class="committee" v-for="committee in data?.contents">
@@ -198,7 +198,7 @@
     
     .committee-list {
         display: grid;
-        grid-template-columns: 240px 1fr;
+        grid-template-columns: 160px 1fr;
         gap: 20px;
     }
 
