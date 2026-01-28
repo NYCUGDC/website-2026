@@ -93,6 +93,7 @@
         margin: 0;
         font-family: 'Rubik', 'Noto Sans TC';
         color: var(--color1);
+        background-color: #f5f6f9;
     }
 
     .button {
@@ -108,7 +109,7 @@
         font-weight: 600;
         border-radius: 32px;
         transition-duration: 0.2s;
-        line-height: 1.5;
+        line-height: 1.2;
     }
 
     .button:hover {
@@ -132,6 +133,8 @@
         transition-duration: 0.2s;
         border: solid 1px var(--color2);
         padding: 12px;
+        border-radius: 8px;
+        background-color: white;
     }
 
     .news article:hover {

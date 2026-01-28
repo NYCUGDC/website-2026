@@ -1,5 +1,5 @@
 <script setup>
-    const { data } = await useMicroCMSGetList({ endpoint: "games" }, { key: 'games' })
+    const { data } = await useMicroCMSGetList({ endpoint: "games", queries: { limit: 50 } }, { key: 'games' })
     const openGame = ref(null)
 
     function convertDate(text) {
@@ -36,22 +36,27 @@
         <Transition name="pop">
             <div class="open-game" v-if="openGame">
                 <div class="open-game-window">
-                    <div style="position: absolute; top: 20px; right: 32px; cursor: pointer; color: var(--color3);" @click="openGame = null">Close</div>
-                    <div class="open-game-content">
-                        <div style="width: 100%; max-width: 360px; position: relative;">
-                            <img :src="openGame?.image?.url" alt="" draggable="false" style="width: 100%;">
-                            <h2>{{ openGame?.name }}</h2>
-                            <div>
-                                <div style="font-size: 15px; color: var(--color3);">{{ convertDate(openGame?.date) }}</div>
-                                <div v-if="openGame?.event" style="font-size: 15px; color: var(--color3);">{{ openGame?.event }}</div>
-                            </div>
-                            <NuxtLink v-if="openGame?.link" target="_blank" :to="openGame?.link" style="text-decoration: none;">
-                                <div class="button" style="background-color: var(--color1); color: white; text-align: center; margin-top: 20px;">
-                                    開啟連結
+                    <div style="overflow: scroll; height: 100%;">
+                        <div class="open-game-content">
+                            <div style="width: 100%; max-width: 360px; position: relative; text-align: center;">
+                                <img :src="openGame?.image?.url" alt="" draggable="false" style="width: 100%;">
+                                <h2>{{ openGame?.name }}</h2>
+                                <div>
+                                    <div style="font-size: 15px; color: var(--color3);">{{ convertDate(openGame?.date) }}</div>
+                                    <div v-if="openGame?.event" style="font-size: 15px; color: var(--color3);">{{ openGame?.event }}</div>
                                 </div>
-                            </NuxtLink>
+                                <NuxtLink v-if="openGame?.link" target="_blank" :to="openGame?.link" style="text-decoration: none;">
+                                    <div class="button" style="background-color: var(--color1); color: white; text-align: center; margin-top: 20px;">
+                                        開啟連結
+                                    </div>
+                                </NuxtLink>
+                            </div>
+                            <div class="open-game-description">{{ openGame.description }}</div>
                         </div>
-                        <div class="open-game-description">{{ openGame.description }}</div>
+                    </div>
+                    <div class="close-button" style="cursor: pointer; position: absolute; top: 16px; right: 16px; display: flex; justify-content: center; align-items: center; width: 32px; height: 32px; background-color: white; border-radius: 18px;" @click="openGame = null">
+                        <div style="position: absolute; width: 2px; height: 16px; background-color: var(--color3); transform: rotate(45deg);"></div>
+                        <div style="position: absolute; width: 2px; height: 16px; background-color: var(--color3); transform: rotate(-45deg);"></div>
                     </div>
                 </div>
             </div>
@@ -74,6 +79,8 @@
         position: relative;
         cursor: pointer;
         transition-duration: 0.2s;
+        background-color: white;
+        border-radius: 8px;
     }
 
     .game article:hover {
@@ -109,7 +116,7 @@
         bottom: 40px;
         left: 40px;
         background-color: var(--color2);
-        overflow: scroll;
+        border-radius: 20px;
     }
 
     .open-game-content {

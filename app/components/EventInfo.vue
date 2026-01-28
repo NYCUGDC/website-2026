@@ -36,6 +36,8 @@
         position: relative;
         overflow: hidden;
         border: solid 1px var(--color2);
+        border-radius: 8px;
+        background-color: white;
     }
 
     .event img {
@@ -66,6 +68,6 @@
         font-weight: 600;
         text-align: center;
         width: 200px;
-        transform: translate(60px, 12px) rotate(21deg);
+        transform: translate(72px, 12px) rotate(24deg);
     }
 </style>

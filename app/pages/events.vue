@@ -1,5 +1,5 @@
 <script setup>
-    const { data } = await useMicroCMSGetList({ endpoint: "events" }, { key: 'events' })
+    const { data } = await useMicroCMSGetList({ endpoint: "events", queries: { limit: 50 } }, { key: 'events' })
 
     useSeoMeta({
         title: '活動與課程'
@@ -13,16 +13,16 @@
                 <div style="font-size: 12px; color: var(--color5); letter-spacing: 0.2em; font-weight: 600;">活動與課程</div>
                 <h1 style="color: var(--color5); margin-top: 8px;">Events & Course</h1>
                 <p style="color: var(--color3);">此處列出了 GDC 社團近期舉辦的課程與活動，歡迎大家踴躍參加！</p>
-                <h2 style="margin-top: 60px; color: var(--color3);">本學期</h2>
+                <h2 style="margin-top: 60px; color: var(--color1);">本學期</h2>
                 <div class="events" v-if="data?.contents?.length">
-                    <div v-if="!data?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px;">
+                    <div v-if="!data?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px; border-radius: 8px;">
                         活動準備中，敬請期待！
                     </div>
                     <EventInfo v-for="event in data?.contents?.filter(e => !e?.ended)" :event="event" />
                     <div></div>
                     <div></div>
                 </div>
-                <h2 style="margin-top: 60px; color: var(--color3);">已結束</h2>
+                <h2 style="margin-top: 60px; color: var(--color1);">已結束</h2>
                 <div class="events" v-if="data?.contents?.length">
                     <EventInfo v-for="event in data?.contents?.filter(e => e?.ended)" :event="event" />
                     <div></div>

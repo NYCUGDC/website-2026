@@ -1,5 +1,5 @@
 <script setup>
-    const { data } = await useMicroCMSGetList({ endpoint: "news" }, { key: 'news' })
+    const { data } = await useMicroCMSGetList({ endpoint: "news", queries: { limit: 50 } }, { key: 'news' })
 
     function convertDate(text) {
         const date = new Date(text)

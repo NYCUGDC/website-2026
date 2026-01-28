@@ -1,7 +1,7 @@
 <script setup>
-    const { data } = await useMicroCMSGetList({ endpoint: "committee", queries: { limit: 30 } }, { key: 'committee' })
+    const { data } = await useMicroCMSGetList({ endpoint: "committee", queries: { limit: 50 } }, { key: 'committee' })
     const news = (await useMicroCMSGetList({ endpoint: "news", queries: { limit: 3 } }, { key: 'news-home' })).data
-    const events = (await useMicroCMSGetList({ endpoint: "events" }, { key: 'events' })).data
+    const events = (await useMicroCMSGetList({ endpoint: "events" }, { key: 'events-home' })).data
 
     function convertDate(text) {
         const date = new Date(text)
@@ -12,11 +12,7 @@
 <template>
     <div>
         <header>
-            <img id="image1" class="images" draggable="false" src="/tablet.png" alt="" width="172" style="position: absolute; top: 15%; left: 10%;">
-            <img id="image2" class="images" draggable="false" src="/cd.png" alt="" width="75" style="position: absolute; top: 25%; left: 20%;">
-            <img id="image3" class="images" draggable="false" src="/cube.png" alt="" width="77" style="position: absolute; bottom: 20%; left: 10%;">
-            <img id="image4" class="images" draggable="false" src="/midi.png" alt="" width="163" style="position: absolute; bottom: 30%; right: 10%;">
-            <img id="image5" class="images" draggable="false" src="/controller.png" alt="" width="56" style="position: absolute; top: 35%; right: 20%;">
+            <div id="bg"></div>
             <img style="position: relative;" src="/logo.png" alt="" width="60" draggable="false">
             <h1 style="position: relative;"><span>陽明交通大學</span><br>遊戲設計社</h1>
             <div class="window">
@@ -72,7 +68,7 @@
                     <div>
                         <h2 style="text-align: center; color: var(--color5); font-size: 28px;">Event & Course</h2>
                         <div v-if="events?.contents?.length" style="display: grid; gap: 12px;">
-                            <div v-if="!events?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px;">
+                            <div v-if="!events?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px; border-radius: 8px;">
                                 活動準備中，敬請期待！
                             </div>
                             <div v-for="event in events?.contents?.filter(e => !e?.ended)" style="position: relative; height: 100px; border: solid 1px var(--color2); display: flex; align-items: center;">
@@ -116,13 +112,17 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 700px;
+        height: 800px;
+        background-image: url('/logo_large.png');
+        background-size: auto 60%;
+        background-repeat: no-repeat;
+        background-position: 55%center;
     }
 
     header > h1 {
         text-align: center;
         font-size: 45px;
-        font-weight: 300;
+        font-weight: 400;
         letter-spacing: 0.2em;
         color: var(--color5);
         margin: 0;
@@ -132,8 +132,18 @@
 
     header > h1 > span {
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: 0.8em;
+    }
+
+    #bg {
+        background-image: url('/images.png');
+        background-size: auto 90%;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
     }
 
     .window {
@@ -141,12 +151,14 @@
         max-width: 480px;
         color: var(--color3);
         border: 1px solid var(--color2);
-        background-color: white;
+        background-color: #ffffffaa;
+        backdrop-filter: blur(4px);
         letter-spacing: 0.05em;
         margin: 60px 16px;
         line-height: 1.8;
         font-size: 13px;
         box-shadow: 4px 4px var(--color2);
+        border-radius: 8px;
     }
 
     .about-pictures {
@@ -160,6 +172,7 @@
         aspect-ratio: 1.66;
         object-fit: cover;
         margin-bottom: 12px;
+        border-radius: 8px;
     }
 
     .about-pictures p {
@@ -195,6 +208,7 @@
         color: var(--color3);
         background-color: white;
         display: flex;
+        border-radius: 8px;
     }
 
     .committee > img {
@@ -211,6 +225,10 @@
     }
 
     @media (max-width: 800px) {
+        #bg {
+            background-position: right center;
+        }
+
         .about-pictures {
             grid-template-columns: 1fr;
         }

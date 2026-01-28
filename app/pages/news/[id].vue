@@ -35,6 +35,10 @@
     .news-content {
         margin: 100px 0px;
         line-height: 1.8;
+        padding: 12px 20px;
+        border-radius: 20px;
+        background-color: white;
+        border: 1px solid var(--color2);
     }
 
     @media (max-width: 800px) {
