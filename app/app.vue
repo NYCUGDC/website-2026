@@ -135,6 +135,7 @@
         padding: 12px;
         border-radius: 8px;
         background-color: white;
+        height: 56px;
     }
 
     .news article:hover {

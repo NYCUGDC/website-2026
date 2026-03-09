@@ -71,7 +71,7 @@
                             <div v-if="!events?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px; border-radius: 8px;">
                                 活動準備中，敬請期待！
                             </div>
-                            <div v-for="event in events?.contents?.filter(e => !e?.ended)" style="position: relative; height: 100px; border: solid 1px var(--color2); display: flex; align-items: center;">
+                            <div v-for="event in events?.contents?.filter(e => !e?.ended)" style="position: relative; height: 80px; border: solid 1px var(--color2); display: flex; align-items: center; border-radius: 8px; background-color: white; overflow: hidden;">
                                 <img :src="event?.image?.url ?? '/logo.png'" alt="" draggable="false" style="height: 100%; aspect-ratio: 1.5; object-fit: cover;">
                                 <div style="padding: 16px; color: var(--color3);">
                                     <div style="font-size: 16px; font-weight: 700; margin-right: 12px;">{{ event?.name }}</div>

@@ -6,7 +6,7 @@
     <article class="event">
         <div style="position: relative;">
             <img :src="props.event?.image?.url ?? '/icon.png'" alt="" draggable="false" :style="props.event?.ended? { filter: 'grayScale(1)', opacity: 0.5 } : {}">
-            <div style="display: flex; flex-wrap: wrap; align-items: center; background: linear-gradient(0deg, #000000aa 30%, transparent 100%); color: white; position: absolute; width: 100%; bottom: 0; padding: 32px 16px 16px 16px;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; background: linear-gradient(0deg, #000000aa 30%, transparent 100%); color: white; position: absolute; width: 100%; bottom: 0; padding: 32px 16px 16px 16px; box-sizing: border-box;">
                 <div style="font-size: 16px; font-weight: 700; margin-right: 12px;">{{ props.event?.name }}</div>
                 <div style="font-size: 12px; letter-spacing: 0.1em;">{{ props.event?.time }}</div>
             </div>
