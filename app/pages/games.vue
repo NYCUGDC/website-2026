@@ -14,7 +14,7 @@
 
 <template>
     <section style="margin: 200px 0px;">
-        <div style="max-width: 1200px; width: 90%; margin: auto;">
+        <div style="max-width: 1000px; width: 90%; margin: auto;">
             <div style="font-size: 12px; color: var(--color5); letter-spacing: 0.2em; font-weight: 600;">遊戲作品</div>
             <h1 style="color: var(--color5); margin-top: 8px;">Games</h1>
             <p style="color: var(--color3);">本頁面收錄了在遊戲接龍與 GameJam 等活動中，由社員們一起創作的遊戲作品！</p>
@@ -70,7 +70,7 @@
         margin-top: 100px;
         display: grid;
         gap: 12px;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 
     .game article {

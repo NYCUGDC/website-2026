@@ -13,7 +13,7 @@
 
 <template>
     <section style="margin: 200px 0px;">
-        <div style="max-width: 1200px; width: 90%; margin: auto;">
+        <div style="max-width: 1000px; width: 90%; margin: auto;">
             <div style="font-size: 12px; color: var(--color5); letter-spacing: 0.2em; font-weight: 600;">最新消息</div>
             <h1 style="color: var(--color5); margin-top: 8px;">News</h1>
             <p style="color: var(--color3);">關於社團近期的一些活動事項與重要公告</p>

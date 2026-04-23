@@ -1,7 +1,7 @@
 <script setup>
     const { params } = useRoute()
     const { data } = await useMicroCMSGetList({
-        endpoint: "news",
+        endpoint: "articles",
         queries: {
             limit: 1,
             filters: 'slug[equals]' + params.id
@@ -21,18 +21,19 @@
 <template>
     <section style="margin: 200px 0px;">
         <div style="max-width: 1000px; width: 90%; margin: auto;">
-            <div style="font-size: 12px; color: var(--color5); letter-spacing: 0.2em; font-weight: 600;">最新消息</div>
+            <div style="font-size: 12px; color: var(--color5); letter-spacing: 0.2em; font-weight: 600;">社團文章</div>
             <h1 style="color: var(--color5); margin-top: 8px;">{{ data?.contents[0]?.title }}</h1>
+                <p style="color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">作者</span>{{ data?.contents[0]?.author }}</p>
             <ClientOnly>
                 <p style="color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">發佈時間</span>{{ convertDate(data?.contents[0]?.publishedAt) }}</p>
             </ClientOnly>
-            <div class="news-content" v-html="data?.contents[0]?.content"></div>
+            <div class="articles-content" v-html="data?.contents[0]?.content"></div>
         </div>
     </section>
 </template>
 
 <style>
-    .news-content {
+    .articles-content {
         margin: 100px 0px;
         line-height: 1.8;
         padding: 12px 20px;
@@ -42,7 +43,7 @@
     }
 
     @media (max-width: 800px) {
-        .news-content {
+        .articles-content {
             font-size: 13px;
         }
     }

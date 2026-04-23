@@ -1,7 +1,13 @@
 <script setup>
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+    import { Pagination } from 'swiper/modules'
+    import 'swiper/css'
+    import 'swiper/css/pagination'
+
     const { data } = await useMicroCMSGetList({ endpoint: "committee", queries: { limit: 50 } }, { key: 'committee' })
     const news = (await useMicroCMSGetList({ endpoint: "news", queries: { limit: 3 } }, { key: 'news-home' })).data
-    const events = (await useMicroCMSGetList({ endpoint: "events" }, { key: 'events-home' })).data
+    const events = (await useMicroCMSGetList({ endpoint: "events", queries: { limit: 3 } }, { key: 'events-home' })).data
+    const articles = (await useMicroCMSGetList({ endpoint: "articles", queries: { limit: 10 } }, { key: 'articles-home' })).data
 
     function convertDate(text) {
         const date = new Date(text)
@@ -84,6 +90,29 @@
                                 <div>所有活動／課程</div>
                             </NuxtLink>
                         </div>
+                    </div>
+                </div>
+                <div style="margin-top: 120px;">
+                    <h2 style="text-align: center; color: var(--color5); font-size: 28px;">Articles</h2>
+                    <div v-if="articles?.contents?.length">
+                        <swiper style="--swiper-pagination-color: #ff9100;" :slides-per-view="1" space-between="16" :breakpoints="{ 801: { slidesPerView: 3 } }" :pagination="{ clickable: true }" :modules="[Pagination]">
+                            <swiper-slide v-for="(article, index) in articles?.contents?.filter(e => !e?.ended)" :key="index">
+                                <NuxtLink :to="'/articles/' + article?.slug" style="text-decoration: unset; color: unset; position: relative; padding-bottom: 20px;">
+                                    <article class="article" style="margin-bottom: 40px;">
+                                        <div>
+                                            <img :src="article?.image?.url ?? '/gdc-character.png'" alt="" style="width: 100%; aspect-ratio: 2; object-fit: cover; border-bottom: solid 2px var(--color2); background-color: var(--color3);">
+                                        </div>
+                                        <div style="margin: 12px;">
+                                            <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ article?.title }}</h2>
+                                                <div style="font-size: 12px; color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">作者</span>{{ article?.author }}</div>
+                                            <ClientOnly>
+                                                <div style="font-size: 12px; color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">發布時間</span>{{ convertDate(article?.publishedAt) }}</div>
+                                            </ClientOnly>
+                                        </div>
+                                    </article>
+                                </NuxtLink>
+                            </swiper-slide>
+                        </swiper>
                     </div>
                 </div>
             </div>

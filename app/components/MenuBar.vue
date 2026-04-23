@@ -28,6 +28,10 @@
                 <div>Games</div>
                 <div style="font-size: 12px; letter-spacing: 0.2em;">遊戲作品</div>
             </NuxtLink>
+            <NuxtLink to="/articles">
+                <div>Articles</div>
+                <div style="font-size: 12px; letter-spacing: 0.2em;">社團文章</div>
+            </NuxtLink>
             <div class="social-links">
                 <NuxtLink target="_blank" to="https://www.facebook.com/NYCUGDC">
                     <div>Facebook</div>

@@ -143,6 +143,25 @@
         border-color: var(--color5);
     }
 
+    .articles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 16px;
+    }
+    
+    .article {
+        transition-duration: 0.2s;
+        border: solid 1px var(--color2);
+        border-radius: 8px;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .article:hover {
+        color: var(--color5);
+        border-color: var(--color5);
+    }
+
     @keyframes scroll {
         from { transform: translateX(0); }
         to { transform: translateX(-50%); }
