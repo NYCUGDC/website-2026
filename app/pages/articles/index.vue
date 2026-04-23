@@ -7,7 +7,8 @@
     }
 
     useSeoMeta({
-        title: '社團文章'
+        title: '社團文章',
+        ogTitle: '社團文章'
     })
 </script>
 

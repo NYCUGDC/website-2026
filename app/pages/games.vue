@@ -8,7 +8,8 @@
     }
 
     useSeoMeta({
-        title: '遊戲作品'
+        title: '遊戲作品',
+        ogTitle: '遊戲作品'
     })
 </script>
 

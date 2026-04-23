@@ -7,7 +7,8 @@
     }
 
     useSeoMeta({
-        title: '最新消息'
+        title: '最新消息',
+        ogTitle: '最新消息'
     })
 </script>
 

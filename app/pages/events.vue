@@ -2,7 +2,8 @@
     const { data } = await useMicroCMSGetList({ endpoint: "events", queries: { limit: 50 } }, { key: 'events' })
 
     useSeoMeta({
-        title: '活動與課程'
+        title: '活動與課程',
+        ogTitle: '活動與課程'
     })
 </script>
 

@@ -14,7 +14,8 @@
     }
 
     useSeoMeta({
-        title: data?.value?.contents[0]?.title
+        title: data?.value?.contents[0]?.title,
+        ogTitle: data?.value?.contents[0]?.title
     })
 </script>
 
