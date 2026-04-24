@@ -59,7 +59,7 @@
                     </div>
                     <div style="font-size: 24px; font-weight: 600; color: var(--color3); cursor: pointer;" @click="scrollToTop">TOP</div>
                 </div>
-                <div style="display: flex; gap: 16px; margin-left: 6px;">
+                <div style="display: flex; gap: 16px; margin-left: 6px; flex-wrap: wrap;">
                     <NuxtLink to="/">
                         <div>Home</div>
                     </NuxtLink>
@@ -71,6 +71,9 @@
                     </NuxtLink>
                     <NuxtLink to="/games">
                         <div>Games</div>
+                    </NuxtLink>
+                    <NuxtLink to="/articles">
+                        <div>Articles</div>
                     </NuxtLink>
                 </div>
             </div>
