@@ -4,7 +4,7 @@
     import 'swiper/css'
     import 'swiper/css/pagination'
 
-    const { data } = await useMicroCMSGetList({ endpoint: "committee", queries: { limit: 50 } }, { key: 'committee' })
+    const about = (await useMicroCMSGetList({ endpoint: "about" }, { key: 'about' })).data
     const news = (await useMicroCMSGetList({ endpoint: "news", queries: { limit: 3 } }, { key: 'news-home' })).data
     const events = (await useMicroCMSGetList({ endpoint: "events", queries: { limit: 3 } }, { key: 'events-home' })).data
     const articles = (await useMicroCMSGetList({ endpoint: "articles", queries: { limit: 10 } }, { key: 'articles-home' })).data
@@ -21,30 +21,30 @@
             <div id="bg"></div>
             <img style="position: relative;" src="/logo.png" alt="" width="60" draggable="false">
             <h1 style="position: relative;"><span>陽明交通大學</span><br>遊戲設計社</h1>
-            <div class="window">
+            <div class="window" v-if="about">
                 <div style="padding: 30px 20px 10px 20px;">
-                    <p>陽明交大遊戲設計社（NYCU GDC），誠徵邀請對遊戲製作、虛擬實境、動畫／角色／場景建模有興趣的你（不論科系），在大學期間與夥伴一起玩遊戲、做遊戲！</p>
+                    <p>{{ about.description }}</p>
                     <img src="/window_icon.png" alt="" width="60" style="position: absolute; top: 16px; right: 16px;">
                 </div>
             </div>
         </header>
         <section style="margin-bottom: 100px;">
             <div style="max-width: 1200px; width: 90%; margin: auto;">
-                <div class="about-pictures">
+                <div class="about-pictures" v-if="about">
                     <div id="about-1">
-                        <img src="/event1.jpg" alt="" draggable="false">
-                        <div style="font-weight: 700;">遊戲製作社課</div>
-                        <p>每學期開設遊戲製作相關技術的課程提供社員參加，包括 Unity 遊戲引擎操作、程式設計與 3D 建模等。</p>
+                        <img :src="about.image1.url" alt="" draggable="false">
+                        <div style="font-weight: 700;">{{ about.info1 }}</div>
+                        <p>{{ about.infoContent1 }}</p>
                     </div>
                     <div id="about-2">
-                        <img src="/event2.jpg" alt="" draggable="false">
-                        <div style="font-weight: 700;">GameJam 與遊戲接龍</div>
-                        <p>定期舉辦免費參與的 GameJam 與遊戲接龍等活動，讓大家能體驗短期內與他人一起合力創作遊戲的過程。</p>
+                        <img :src="about.image2.url" alt="" draggable="false">
+                        <div style="font-weight: 700;">{{ about.info2 }}</div>
+                        <p>{{ about.infoContent2 }}</p>
                     </div>
                     <div id="about-3">
-                        <img src="/event3.jpg" alt="" draggable="false">
-                        <div style="font-weight: 700;">講座與社群</div>
-                        <p>邀請遊戲開發者舉辦實體講座分享經驗，歡迎對遊戲產業有興趣的同學一起來交流！</p>
+                        <img :src="about.image3.url" alt="" draggable="false">
+                        <div style="font-weight: 700;">{{ about.info3 }}</div>
+                        <p>{{ about.infoContent3 }}</p>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                                 <NuxtLink :to="'/articles/' + article?.slug" style="text-decoration: unset; color: unset; position: relative; padding-bottom: 20px;">
                                     <article class="article" style="margin-bottom: 40px;">
                                         <div>
-                                            <img :src="article?.image?.url ?? '/gdc-character.png'" alt="" style="width: 100%; aspect-ratio: 2; object-fit: cover; border-bottom: solid 2px var(--color2); background-color: var(--color3);">
+                                            <img :src="article?.image?.url ?? '/gdc-character.png'" alt="" style="width: 100%; aspect-ratio: 2; object-fit: cover; border-bottom: solid 1px var(--color2); background-color: var(--color3);">
                                         </div>
                                         <div style="margin: 12px;">
                                             <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ article?.title }}</h2>
@@ -120,8 +120,8 @@
         <section style="padding: 120px 0px; background: var(--color2);">
             <div style="max-width: 900px; width: 90%; margin: auto;" class="committee-list">
                 <div style="font-size: 15px; color: var(--color1); letter-spacing: 0.2em; font-weight: 600;">社團幹部</div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px;" v-if="data?.contents?.length">
-                    <div class="committee" v-for="committee in data?.contents">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px;" v-if="about">
+                    <div class="committee" v-for="committee in about.committees">
                         <img :src="committee?.avatar?.url ?? '/gdc-character.png'" alt="" draggable="false">
                         <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; margin-left: 12px;">
                             <div style="font-size: 16px; font-weight: 700;">{{ committee?.name }}</div>

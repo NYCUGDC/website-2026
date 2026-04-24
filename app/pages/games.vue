@@ -25,7 +25,8 @@
                         <img class="game-img" :src="game?.image?.url" alt="" draggable="false">
                     </div>
                     <div style="padding: 8px;">
-                        <h2 style="margin: 0 0 4px 0; font-size: 16px;">{{ game?.name }}</h2>
+                        <h2 style="margin: 0 0 8px 0; font-size: 16px;">{{ game?.name }}</h2>
+                        <div style="font-size: 12px; color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">作者</span> {{ game?.author }}</div>
                         <ClientOnly>
                             <div style="font-size: 12px; color: var(--color3);">{{ convertDate(game?.date) }}</div>
                         </ClientOnly>
@@ -43,8 +44,9 @@
                                 <img :src="openGame?.image?.url" alt="" draggable="false" style="width: 100%;">
                                 <h2>{{ openGame?.name }}</h2>
                                 <div>
+                                    <div style="font-size: 15px; color: var(--color3);">{{ openGame?.author }}</div>
                                     <div style="font-size: 15px; color: var(--color3);">{{ convertDate(openGame?.date) }}</div>
-                                    <div v-if="openGame?.event" style="font-size: 15px; color: var(--color3);">{{ openGame?.event }}</div>
+                                    <div v-if="openGame?.relatedEvent" style="font-size: 15px; color: var(--color3);">{{ openGame?.relatedEvent?.name }}</div>
                                 </div>
                                 <NuxtLink v-if="openGame?.link" target="_blank" :to="openGame?.link" style="text-decoration: none;">
                                     <div class="button" style="background-color: var(--color1); color: white; text-align: center; margin-top: 20px;">

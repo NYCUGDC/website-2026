@@ -22,7 +22,7 @@
                 <NuxtLink v-for="article in data?.contents" :to="'/articles/' + article?.slug" style="text-decoration: unset; color: unset; position: relative;">
                     <article class="article">
                         <div>
-                            <img :src="article?.image?.url ?? '/gdc-character.png'" alt="" style="width: 100%; aspect-ratio: 2; object-fit: cover; border-bottom: solid 2px var(--color2); background-color: var(--color3);">
+                            <img :src="article?.image?.url ?? '/gdc-character.png'" alt="" style="width: 100%; aspect-ratio: 2; object-fit: cover; border-bottom: solid 1px var(--color2); background-color: var(--color3);">
                         </div>
                         <div style="margin: 12px;">
                             <h2 style="margin: 0 0 12px 0; font-size: 18px; font-weight: 600;">{{ article?.title }}</h2>
