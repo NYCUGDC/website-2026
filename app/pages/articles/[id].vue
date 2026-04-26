@@ -43,6 +43,44 @@
         border: 1px solid var(--color2);
     }
 
+    .articles-content table {
+        border-collapse: collapse;
+    }
+
+    .articles-content tr, td {
+        border: 1px solid var(--color2);
+        padding: 8px;
+    }
+
+    .articles-content blockquote {
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid var(--color2);
+        color: var(--color3);
+    }
+
+    .articles-content p {
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+    }
+
+    .articles-content p + p {
+        margin-block-start: 1em;
+        margin-block-end: 0px;
+    }
+
+    .articles-content pre {
+        color: var(--color2);
+        background-color: var(--color1);
+        padding: 8px;
+        border-radius: 8px;
+        overflow-x: scroll;
+    }
+
+    .articles-content a {
+        color: var(--color4);
+    }
+
     @media (max-width: 800px) {
         .articles-content {
             font-size: 13px;

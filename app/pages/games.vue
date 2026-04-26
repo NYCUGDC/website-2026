@@ -26,7 +26,7 @@
                     </div>
                     <div style="padding: 8px;">
                         <h2 style="margin: 0 0 8px 0; font-size: 16px;">{{ game?.name }}</h2>
-                        <div style="font-size: 12px; color: var(--color3);"><span style="font-weight: 600; margin-right: 12px;">作者</span> {{ game?.author }}</div>
+                        <div style="font-size: 12px; color: var(--color3); margin-bottom: 8px;"><span style="font-weight: 600; margin-right: 12px;">作者</span> {{ game?.author }}</div>
                         <ClientOnly>
                             <div style="font-size: 12px; color: var(--color3);">{{ convertDate(game?.date) }}</div>
                         </ClientOnly>
