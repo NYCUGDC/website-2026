@@ -25,8 +25,14 @@
             <div v-if="props.event?.week">{{ props.event?.week }}</div>
             <div v-if="props.event?.feature" style="font-weight: 700; color: var(--color3);">特色</div>
             <div v-if="props.event?.feature">{{ props.event?.feature }}</div>
-            <div v-if="props.event?.description" style="font-weight: 700; color: var(--color3);">內容</div>
-            <div v-if="props.event?.description">{{ props.event?.description }}</div>
+        </div>
+        <div v-if="props.event?.description" class="event-description">
+            <div>{{ props.event?.description }}</div>
+        </div>
+        <div v-if="props.event?.link && !props.event?.ended" style="padding: 16px; text-align: center;">
+            <NuxtLink class="button" target="_blank" :to="props.event?.link">
+                <div>報名連結</div>
+            </NuxtLink>
         </div>
     </article>
 </template>
@@ -57,6 +63,14 @@
         white-space: pre-wrap;
     }
 
+    .event-description {
+        border-top: 1px solid var(--color2);
+        padding: 16px;
+        letter-spacing: 0.05em;
+        font-size: 12px;
+        white-space: pre-wrap;
+    }
+
     .tag {
         position: absolute;
         top: 0px;
@@ -68,6 +82,6 @@
         font-weight: 600;
         text-align: center;
         width: 200px;
-        transform: translate(72px, 12px) rotate(24deg);
+        transform: translate(75px, 15px) rotate(30deg);
     }
 </style>

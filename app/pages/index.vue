@@ -6,7 +6,7 @@
 
     const about = (await useMicroCMSGetList({ endpoint: "about" }, { key: 'about' })).data
     const news = (await useMicroCMSGetList({ endpoint: "news", queries: { limit: 3 } }, { key: 'news-home' })).data
-    const events = (await useMicroCMSGetList({ endpoint: "events", queries: { limit: 3 } }, { key: 'events-home' })).data
+    const events = (await useMicroCMSGetList({ endpoint: "events", queries: { limit: 3, filters: 'ended[equals]false' } }, { key: 'events-home' })).data
     const articles = (await useMicroCMSGetList({ endpoint: "articles", queries: { limit: 10 } }, { key: 'articles-home' })).data
 
     function convertDate(text) {
@@ -74,10 +74,10 @@
                     <div>
                         <h2 style="text-align: center; color: var(--color5); font-size: 28px;">Event & Course</h2>
                         <div v-if="events?.contents?.length" style="display: grid; gap: 12px;">
-                            <div v-if="!events?.contents?.filter(e => !e?.ended)?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px; border-radius: 8px;">
+                            <div v-if="!events?.contents?.length" style="display: flex; align-items: center; justify-content: center; color: var(--color3); background-color: var(--color2); padding: 20px; border-radius: 8px;">
                                 活動準備中，敬請期待！
                             </div>
-                            <div v-for="event in events?.contents?.filter(e => !e?.ended)" style="position: relative; height: 80px; border: solid 1px var(--color2); display: flex; align-items: center; border-radius: 8px; background-color: white; overflow: hidden;">
+                            <div v-for="event in events?.contents" style="position: relative; height: 80px; border: solid 1px var(--color2); display: flex; align-items: center; border-radius: 8px; background-color: white; overflow: hidden;">
                                 <img :src="event?.image?.url ?? '/logo.png'" alt="" draggable="false" style="height: 100%; aspect-ratio: 1.5; object-fit: cover;">
                                 <div style="padding: 16px; color: var(--color3);">
                                     <div style="font-size: 16px; font-weight: 700; margin-right: 12px;">{{ event?.name }}</div>
@@ -96,7 +96,7 @@
                     <h2 style="text-align: center; color: var(--color5); font-size: 28px;">Articles</h2>
                     <div v-if="articles?.contents?.length">
                         <swiper style="--swiper-pagination-color: #ff9100;" :slides-per-view="1" space-between="16" :breakpoints="{ 801: { slidesPerView: 3 } }" :pagination="{ clickable: true }" :modules="[Pagination]">
-                            <swiper-slide v-for="(article, index) in articles?.contents?.filter(e => !e?.ended)" :key="index">
+                            <swiper-slide v-for="(article, index) in articles?.contents" :key="index">
                                 <NuxtLink :to="'/articles/' + article?.slug" style="text-decoration: unset; color: unset; position: relative; padding-bottom: 20px;">
                                     <article class="article" style="margin-bottom: 40px;">
                                         <div>
